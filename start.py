@@ -5,12 +5,18 @@ import argparse
 def _get_all_repos(organization_name, access_token):
     repo_list = []
     page = 1
-    # TODO loop over all pages!
-    url = f"https://api.github.com/orgs/{organization_name}/repos?per_page=100&page={page}"
-    r = requests.get(url, headers={"Authorization": f"token {access_token}"})
-    r.raise_for_status()
-    for data in r.json():
-        repo_list.append(data["full_name"])
+    keep_going = True
+    while keep_going:
+        url = f"https://api.github.com/orgs/{organization_name}/repos?per_page=100&page={page}"
+        r = requests.get(url, headers={"Authorization": f"token {access_token}"})
+        r.raise_for_status()
+        data = r.json()
+        if data:
+            for d in data:
+                repo_list.append(d["full_name"])
+        else:
+            keep_going = False
+        page += 1
     return repo_list
 
 
