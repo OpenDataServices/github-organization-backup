@@ -24,11 +24,11 @@ Does not lock repositories, so others can carry on working on them.
 
 To start the backup run:
 
-    python.py start.py --access-token TOKEN ORG_NAME
+    python start.py --access-token TOKEN ORG_NAME
 
 Then when you think it will be ready, run:
 
-    python.py get.py --access-token TOKEN ORG_NAME
+    python get.py --access-token TOKEN ORG_NAME
 
 If the backup is not ready, this will wait and keep checking.
 
