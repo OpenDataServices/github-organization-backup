@@ -17,10 +17,12 @@ def _get_exported_migration(migrations):
 def _download_exported_migration(organization_name, exported_migration, access_token):
     print("Downloading exported migration")
     url = "https://api.github.com/orgs/{}/migrations/{}/archive".format(organization_name, exported_migration["id"])
-    r = requests.get(url, headers={"Authorization": f"token {access_token}"},)
+    r = requests.get(url, headers={"Authorization": f"token {access_token}"}, stream=True)
     r.raise_for_status()
     with open("backup.zip", "wb") as f:
-        f.write(r.content)
+        for chunk in r.iter_content(chunk_size=1024*1024):
+            if chunk:
+                f.write(chunk)
 
 def get_org_backup(organization_name, access_token):
     while True:
