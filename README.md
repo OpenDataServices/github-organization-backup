@@ -40,3 +40,12 @@ Take the `backup` file from this and rename it `backup.tar`
 
 Extract that file.
 
+
+## Trouble shooting
+
+### requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.github.com/orgs/xxxxxxx/repos?per_page=100&page=1
+
+The organisation may restrict Classic Access tokens. 
+
+Go to organisation settings, "Personal Access tokens" then "settings" in Sidebar, "Tokens (classic)" in tab, and make sure they are allowed
+
