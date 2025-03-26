@@ -24,6 +24,7 @@ def _download_exported_migration(organization_name, exported_migration, access_t
 
 def get_org_backup(organization_name, access_token):
     while True:
+        print("Looking for Migrations")
         url = f"https://api.github.com/orgs/{organization_name}/migrations"
         data = {}
         r = requests.get(url, headers={"Authorization": f"token {access_token}"}, json=data)
