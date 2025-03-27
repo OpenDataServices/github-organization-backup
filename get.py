@@ -19,7 +19,7 @@ def _download_exported_migration(organization_name, exported_migration, access_t
     url = "https://api.github.com/orgs/{}/migrations/{}/archive".format(organization_name, exported_migration["id"])
     r = requests.get(url, headers={"Authorization": f"token {access_token}"}, stream=True)
     r.raise_for_status()
-    with open("backup.zip", "wb") as f:
+    with open("backup.tar.gz", "wb") as f:
         for chunk in r.iter_content(chunk_size=1024*1024):
             if chunk:
                 f.write(chunk)

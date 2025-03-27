@@ -32,14 +32,13 @@ Then when you think it will be ready, run:
 
 If the backup is not ready, this will wait and keep checking.
 
-You'll then have a backup.zip file.
+You'll then have a backup.tar.gz file.
 
-Extract this file - some tools have problems with this.
+Extract this file:
 
-Take the `backup` file from this and rename it `backup.tar`
+    gzip -d backup.tar.gz
 
-Extract that file.
-
+Then save the backup.tar file as appropriate.
 
 ## Trouble shooting
 
