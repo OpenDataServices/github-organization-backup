@@ -32,13 +32,8 @@ Then when you think it will be ready, run:
 
 If the backup is not ready, this will wait and keep checking.
 
-You'll then have a backup.tar.gz file.
+You'll then have a backup.ORGNAME.tar.gz file.
 
-Extract this file:
-
-    gzip -d backup.tar.gz
-
-Then save the backup.tar file as appropriate.
 
 ## Trouble shooting
 

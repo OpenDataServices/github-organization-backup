@@ -15,11 +15,11 @@ def _get_exported_migration(migrations):
     return None
 
 def _download_exported_migration(organization_name, exported_migration, access_token):
-    print("Downloading exported migration")
+    print("Downloading exported migration {}".format(exported_migration["id"]))
     url = "https://api.github.com/orgs/{}/migrations/{}/archive".format(organization_name, exported_migration["id"])
     r = requests.get(url, headers={"Authorization": f"token {access_token}"}, stream=True)
     r.raise_for_status()
-    with open("backup.tar.gz", "wb") as f:
+    with open("backup.{}.tar.gz".format(organization_name), "wb") as f:
         for chunk in r.iter_content(chunk_size=1024*1024):
             if chunk:
                 f.write(chunk)
