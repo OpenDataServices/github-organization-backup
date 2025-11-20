@@ -26,6 +26,9 @@ To start the backup run:
 
     python start.py --access-token TOKEN ORG_NAME
 
+* If that worked, you'll see a lot of JSON on the screen.
+* If you see `requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://api.github.com/orgs/iati/migrations` - try it again a few times
+
 Then when you think it will be ready, run:
 
     python get.py --access-token TOKEN ORG_NAME
